@@ -8,7 +8,7 @@
 
 An end-to-end modern **ELT (Extract, Load, Transform)** data platform designed for financial commodities analytics (Crude Oil, Gold, Silver). The platform ingests financial market feeds, loads raw records into a PostgreSQL Data Warehouse, executes layered dimensional modeling and quality tests via **dbt (data build tool)**, and serves analytics through an interactive **Streamlit** dashboard.
 
-> **Orchestration:** Scheduled execution, failure alerting, and dependency management for this pipeline are driven by the companion [Airflow Data Orchestrator](https://github.com/mksouzza/modern-stack) project.
+> **Orchestration:** Scheduled execution, failure alerting, and dependency management for this pipeline are driven by the companion [Airflow Data Orchestrator](https://github.com/mksouzza/airflow-data-orchestrator) project.
 
 ---
 
@@ -72,7 +72,7 @@ Data quality gates are integrated into the pipeline using dbt test suites:
 ## Repository Structure
 
 ```plaintext
-open-dw-workshop/
+commodities-data-warehouse/
 ├── app/
 │   └── app.py                      # Streamlit interactive analytics dashboard
 ├── dw_workshop/                    # dbt project root
@@ -109,8 +109,8 @@ open-dw-workshop/
 ### 2. Environment Setup
 ```bash
 # Clone repository
-git clone https://github.com/mksouzza/open-dw-workshop.git
-cd open-dw-workshop
+git clone https://github.com/mksouzza/commodities-data-warehouse.git
+cd commodities-data-warehouse
 
 # Create and activate virtual environment
 python3 -m venv .venv
@@ -166,6 +166,6 @@ Open your browser at `http://localhost:8501` to explore the dashboard.
 
 This project is part of a comprehensive three-pillar Data Engineering portfolio:
 
-1. **[Commodities Data Warehouse & Analytics Platform](https://github.com/mksouzza/open-dw-workshop)** (Current Project): Batch ELT, dimensional modeling, dbt-core, PostgreSQL, and Streamlit.
+1. **[Commodities Data Warehouse & Analytics Platform](https://github.com/mksouzza/commodities-data-warehouse)** (Current Project): Batch ELT, dimensional modeling, dbt-core, PostgreSQL, and Streamlit.
 2. **[Real-Time Omnichannel Messaging Lakehouse](https://github.com/mksouzza/realtime-messaging-lakehouse)**: Real-time streaming, Medallion Lakehouse, PySpark, Delta Lake, and GCP Terraform.
-3. **[Airflow Data Pipeline Orchestrator](https://github.com/mksouzza/modern-stack)**: Central workflow orchestration, TaskFlow API, failure alerts, SLA monitoring, and Astro CLI.
+3. **[Airflow Data Pipeline Orchestrator](https://github.com/mksouzza/airflow-data-orchestrator)**: Central workflow orchestration, TaskFlow API, failure alerts, SLA monitoring, and Astro CLI.
