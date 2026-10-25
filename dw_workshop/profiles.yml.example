@@ -1,0 +1,15 @@
+# Sample dbt profile configuration.
+# Copy to ~/.dbt/profiles.yml or set DBT_PROFILES_DIR=.
+commodities_dw:
+  target: dev
+  outputs:
+    dev:
+      type: postgres
+      host: "{{ env_var('DB_HOST_PROD', 'localhost') }}"
+      user: "{{ env_var('DB_USER_PROD', 'postgres') }}"
+      password: "{{ env_var('DB_PASS_PROD', 'postgres') }}"
+      port: "{{ env_var('DB_PORT_PROD', '5432') | int }}"
+      dbname: "{{ env_var('DB_NAME_PROD', 'commodities_dw') }}"
+      schema: public
+      threads: 4
+      keepalives_idle: 0

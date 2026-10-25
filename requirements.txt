@@ -1,0 +1,17 @@
+# Core Data Processing
+pandas>=2.0.0
+numpy>=1.24.0
+yfinance>=0.2.30
+
+# Database & ORM
+SQLAlchemy>=2.0.0
+psycopg2-binary>=2.9.9
+python-dotenv>=1.0.0
+
+# Analytics & BI
+streamlit>=1.30.0
+plotly>=5.18.0
+
+# Data Transformation & Testing
+dbt-core>=1.7.0
+dbt-postgres>=1.7.0

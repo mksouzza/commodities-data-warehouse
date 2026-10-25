@@ -1,2 +1,23 @@
-.venv
+# Environments
 .env
+.venv/
+venv/
+ENV/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# dbt
+target/
+dbt_packages/
+logs/
+*.log
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
