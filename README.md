@@ -158,3 +158,14 @@ Open your browser at `http://localhost:8501` to explore the dashboard.
 - **Windowed Financial Analytics:** Uses window functions (`lag`, moving averages) directly in SQL for high-performance transformations.
 - **Separation of Concerns:** Clear boundaries between raw ingestion, model transformation, and BI consumption.
 - **Production Ready:** Environment configuration separated from code, reproducible Docker setup, and complete test coverage.
+
+
+---
+
+## Data Engineering Portfolio Ecosystem
+
+This project is part of a comprehensive three-pillar Data Engineering portfolio:
+
+1. **[Commodities Data Warehouse & Analytics Platform](https://github.com/mksouzza/open-dw-workshop)** (Current Project): Batch ELT, dimensional modeling, dbt-core, PostgreSQL, and Streamlit.
+2. **[Real-Time Omnichannel Messaging Lakehouse](https://github.com/mksouzza/realtime-messaging-lakehouse)**: Real-time streaming, Medallion Lakehouse, PySpark, Delta Lake, and GCP Terraform.
+3. **[Airflow Data Pipeline Orchestrator](https://github.com/mksouzza/modern-stack)**: Central workflow orchestration, TaskFlow API, failure alerts, SLA monitoring, and Astro CLI.
