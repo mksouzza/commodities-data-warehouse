@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: dm_commodities_daily
+    description: "Analytics Datamart: Daily commodity prices with computed moving averages, daily returns, and price changes."
+    columns:
+      - name: trade_date
+        description: "Trading calendar date."
+        tests:
+          - not_null
+      - name: symbol
+        description: "Ticker identifier."
+        tests:
+          - not_null
+      - name: close_price
+        description: "Official market closing price."
+        tests:
+          - not_null
+
+  - name: dm_commodity_trades
+    description: "Analytics Datamart: Trade transaction logs enriched with official closing prices and slippage analysis."
+    columns:
+      - name: transaction_id
+        description: "Unique trade transaction ID."
+        tests:
+          - unique
+          - not_null
+      - name: symbol
+        description: "Traded commodity ticker."
+        tests:
+          - not_null
+      - name: action
+        description: "Trade execution side."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['BUY', 'SELL']
+
+  - name: commodities_rep
+    description: "Consolidated reporting view consumable by downstream BI dashboards."
+    columns:
+      - name: trade_date
+        description: "Trading date."
+        tests:
+          - not_null
+      - name: symbol
+        description: "Commodity symbol."
+        tests:
+          - not_null

@@ -1,16 +1,64 @@
 version: 2
 
 sources:
-  - name: dbsalesworkshop
+  - name: commodities_dw
     schema: public
-    tables: 
+    description: "Raw ingested market data tables loaded via Python extract_load pipeline."
+    tables:
       - name: commodities
-        description: "table with commodities historical data"
+        description: "Raw historical commodity market quotes ingested from Yahoo Finance."
         columns:
           - name: Date
-            description: "observation date"
+            description: "Market trading date timestamp."
           - name: Close
-            description: "commodity closing price"
+            description: "Trading session closing price."
+            tests:
+              - not_null
           - name: symbol
-            description: "commodity symbol"
+            description: "Market ticker symbol (e.g., CL=F, GC=F, SI=F)."
+            tests:
+              - not_null
 
+models:
+  - name: stg_commodities
+    description: "Staging layer: Cleaned, typed, and standardized commodity daily market prices."
+    columns:
+      - name: trade_date
+        description: "Trading calendar date."
+        tests:
+          - not_null
+      - name: symbol
+        description: "Ticker identifier."
+        tests:
+          - not_null
+      - name: close_price
+        description: "Closing price rounded to 4 decimal places."
+        tests:
+          - not_null
+
+  - name: stg_commodity_transactions
+    description: "Staging layer: Cleaned operational trade transactions from trading desks."
+    columns:
+      - name: transaction_id
+        description: "Unique trade transaction identifier."
+        tests:
+          - unique
+          - not_null
+      - name: transaction_date
+        description: "Execution date of the trade."
+        tests:
+          - not_null
+      - name: symbol
+        description: "Traded commodity ticker."
+        tests:
+          - not_null
+      - name: action
+        description: "Order side: BUY or SELL."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['BUY', 'SELL']
+      - name: quantity
+        description: "Traded contracts count."
+        tests:
+          - not_null
